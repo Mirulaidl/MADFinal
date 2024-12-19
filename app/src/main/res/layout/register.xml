@@ -10,45 +10,79 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="156dp"
-        android:text="Login"
+        android:text="Sign Up"
         android:textAlignment="center"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/nric"
+        android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="96dp"
-        android:hint="NRIC"
+        android:hint="Email Address"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvRegister" />
-
-    <Button
-        android:id="@+id/btnlogin"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:text="Login"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/fullname" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
+        android:hint="Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nric" />
+
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="36dp"
+        android:text="Register"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmpassword" />
+
+    <EditText
+        android:id="@+id/confirmpassword"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Confirm Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Phone Number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <EditText
+        android:id="@+id/nric"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="NRIC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+    <EditText
+        android:id="@+id/fullname"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Full Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegister" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
