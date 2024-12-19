@@ -1,4 +1,6 @@
 package com.example.madfinal;
 
-public class login {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class login extends AppCompatActivity {
 }
