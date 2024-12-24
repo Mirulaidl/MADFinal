@@ -14,6 +14,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class login extends AppCompatActivity {
 
     EditText email,password;
-    Button btnLogin;
+    Button btnLogin, btnRegister;
 
     FirebaseUser currentUser;//used to store current user of account
     FirebaseAuth mAuth;//Used for firebase authentication
@@ -38,8 +43,16 @@ public class login extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnlogin);
+        btnRegister = (Button) findViewById(R.id.btnregister);
         loadingBar = new ProgressDialog(this);
 
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(login.this,register.class);
+                startActivity(regIntent);
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,8 +84,24 @@ public class login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful())//If account login successful print message and send user to main Activity
                             {
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                DatabaseReference reference = FirebaseDatabase.getInstance(Constant.firebaseInstance).getReference().child("user");
+                                String userID = user.getUid();
+
+                                reference.child(userID).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                        String userTypeDB = snapshot.child("").getValue().toString();
+                                        startActivity(new Intent(login.this, dashboardMain.class));
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(login.this, "something wrong on 92", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                                 sendToMainActivity();
-                                Toast.makeText(login.this,"Welcome to Reference Center",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this,"Welcome to blablabla",Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                             }
                             else//Print the error message incase of failure
