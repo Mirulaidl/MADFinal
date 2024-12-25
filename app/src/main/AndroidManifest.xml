@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADFinal"
         tools:targetApi="31">
+
+        <activity
+            android:name=".FeedbackActivity"
+            android:exported="false" />
         <activity
             android:name=".testAct"
             android:exported="false" />
